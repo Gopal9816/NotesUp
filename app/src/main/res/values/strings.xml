@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">NotesUp</string>
     <string name="empty_notes_text">It seems like you don\'t have any notes. Click on the + button to add new notes</string>
+    <string name="notes_drawer_text">Notes</string>
+    <string name="archived_drawer_text">Archived Notes</string>
+    <string name="reminders_drawer_text">Reminders</string>
 </resources>

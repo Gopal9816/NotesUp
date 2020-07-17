@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/ic_baseline_notes_24"
+        android:title="@string/notes_drawer_text" />
+    <item
+        android:id="@+id/archived_drawer_item"
+        android:icon="@drawable/ic_baseline_archive_24"
+        android:title="@string/archived_drawer_text" />
+    <item
+        android:id="@+id/reminder_drawer_item"
+        android:icon="@drawable/ic_baseline_notification_important_24"
+        android:title="@string/reminders_drawer_text" />
+</menu>
