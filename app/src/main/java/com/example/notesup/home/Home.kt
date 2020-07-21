@@ -70,7 +70,15 @@ class Home : Fragment() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 val note = adapter.getNoteAt(viewHolder.adapterPosition)
                 adapter.removeNote(viewHolder.adapterPosition)
-                Snackbar.make(requireView(),"Note deleted",Snackbar.LENGTH_LONG)
+
+                lateinit var snackbarMessage: String
+
+                if (direction == ItemTouchHelper.RIGHT)
+                    snackbarMessage = "Note deleted"
+                else if (direction == ItemTouchHelper.LEFT)
+                    snackbarMessage = "Note Archived"
+
+                Snackbar.make(requireView(),snackbarMessage,Snackbar.LENGTH_LONG)
                     .setAction("UNDO",View.OnClickListener {
                         adapter.submitList(viewModel.notesList.value)
                     })
@@ -80,7 +88,10 @@ class Home : Fragment() {
                             super.onDismissed(transientBottomBar, event)
 
                             if (event ==  DISMISS_EVENT_TIMEOUT or  DISMISS_EVENT_SWIPE){
-                                viewModel.deleteNote(note.uid)
+                                if (direction == ItemTouchHelper.RIGHT)
+                                    viewModel.deleteNote(note.uid)
+                                else if (direction == ItemTouchHelper.LEFT)
+                                    viewModel.archiveNote(note)
                             }
                         }
                     })
@@ -97,8 +108,14 @@ class Home : Fragment() {
                 isCurrentlyActive: Boolean
             ) {
                 RecyclerViewSwipeDecorator.Builder(c,recyclerView,viewHolder,dX,dY,actionState,isCurrentlyActive)
-                    .addBackgroundColor(Color.RED)
-                    .addActionIcon(R.drawable.ic_baseline_delete_24)
+                    .addSwipeRightBackgroundColor(Color.RED)
+                    .addSwipeRightActionIcon(R.drawable.ic_baseline_delete_24)
+                    .setSwipeRightLabelColor(Color.WHITE)
+                    .addSwipeRightLabel("DELETE")
+                    .addSwipeLeftBackgroundColor(Color.GREEN)
+                    .addSwipeLeftActionIcon(R.drawable.ic_baseline_archive_24)
+                    .addSwipeLeftLabel("ARCHIVE")
+                    .setSwipeLeftLabelColor(Color.WHITE)
                     .create()
                     .decorate()
                 super.onChildDraw(
@@ -143,7 +160,6 @@ class Home : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 
 }

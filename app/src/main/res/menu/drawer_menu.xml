@@ -6,7 +6,7 @@
         android:icon="@drawable/ic_baseline_notes_24"
         android:title="@string/notes_drawer_text" />
     <item
-        android:id="@+id/archived_drawer_item"
+        android:id="@+id/archivedNotesFragment"
         android:icon="@drawable/ic_baseline_archive_24"
         android:title="@string/archived_drawer_text" />
     <item

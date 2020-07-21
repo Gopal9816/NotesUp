@@ -59,6 +59,19 @@ class HomeViewModel(
         }
     }
 
+    fun archiveNote(note: Note){
+        note.archived = true
+        uiScope.launch {
+            updateNoteinDB(note)
+        }
+    }
+
+    private suspend fun updateNoteinDB(note: Note) {
+        return withContext(Dispatchers.IO){
+            notesDao.updateNote(note)
+        }
+    }
+
     override fun onCleared() {
         super.onCleared()
         job.cancel()
