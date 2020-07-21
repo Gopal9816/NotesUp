@@ -15,5 +15,6 @@ data class Note(
     var title: String = "Untitled",
     var description: String?,
     @TypeConverters(Convertors::class)
-    var timestamp: Date?
+    var timestamp: Date?,
+    var archived: Boolean = false
 ): Parcelable
