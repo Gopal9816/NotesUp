@@ -58,6 +58,8 @@ class Home : Fragment() {
         val dividerItemDecoration = DividerItemDecoration(binding.notesList.context,DividerItemDecoration.VERTICAL)
         binding.notesList.addItemDecoration(dividerItemDecoration)
 
+
+
         val simpleItemTouchCallback = object :ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT){
             override fun onMove(
                 recyclerView: RecyclerView,
@@ -82,7 +84,6 @@ class Home : Fragment() {
                     .setAction("UNDO",View.OnClickListener {
                         adapter.submitList(viewModel.notesList.value)
                     })
-                    .setActionTextColor(resources.getColor(R.color.colorPrimaryDark))
                     .addCallback(object : Snackbar.Callback(){
                         override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
                             super.onDismissed(transientBottomBar, event)
@@ -97,6 +98,8 @@ class Home : Fragment() {
                     })
                     .show()
             }
+
+
 
             override fun onChildDraw(
                 c: Canvas,

@@ -9,7 +9,7 @@ import androidx.room.Update
 @Dao
 interface NotesDao {
     @Insert
-    fun insertNote(vararg note: Note): List<Long>
+    fun insertNote(vararg note: Note)
 
     @Update
     fun updateNote(note: Note)

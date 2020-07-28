@@ -26,13 +26,11 @@ class AddNoteViewModel(
             newNote = false
             previousNote
         } ?: Note(description = null,timestamp = Date())
-
-        val formatter = SimpleDateFormat("dd/MM/yyyy")
     }
 
     private suspend fun insertIntoDatabase(){
         return withContext(Dispatchers.IO){
-            val res= dataSource.insertNote(note)
+            dataSource.insertNote(note)
         }
     }
 

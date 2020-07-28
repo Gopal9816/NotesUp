@@ -4,4 +4,6 @@
     <string name="notes_drawer_text">Notes</string>
     <string name="archived_drawer_text">Archived Notes</string>
     <string name="reminders_drawer_text">Reminders</string>
+    <string name="add_note_hint">Enter your note here</string>
+    <string name="add_title_hint">Enter title</string>
 </resources>

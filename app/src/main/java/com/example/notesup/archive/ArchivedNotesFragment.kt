@@ -81,7 +81,6 @@ class ArchivedNotesFragment : Fragment() {
                     .setAction("UNDO",View.OnClickListener {
                         adapter.submitList(viewModel.notesList.value)
                     })
-                    .setActionTextColor(resources.getColor(R.color.colorPrimaryDark))
                     .addCallback(object : Snackbar.Callback(){
                         override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
                             super.onDismissed(transientBottomBar, event)
